@@ -58,5 +58,11 @@
     "name": "Felipe",
     "email": "fe@teee.com",
     "password": "felipe098"
+  },
+  {
+    "id": 1770899230939,
+    "name": "Jonathan Angular",
+    "email": "jonathan@teste.com",
+    "password": "123"
   }
 ]

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { LoginForm } from '../../pages/login-form/login-form';
-import { RegisterUserForm } from '../../pages/register-user-form/register-user-form';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-authentication-screen',
-  imports: [RegisterUserForm, LoginForm],
+  imports: [RouterOutlet],
   templateUrl: './authentication-screen.html',
   styleUrl: './authentication-screen.css',
 })
