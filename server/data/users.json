@@ -64,5 +64,11 @@
     "name": "Jonathan Angular",
     "email": "jonathan@teste.com",
     "password": "123"
+  },
+  {
+    "id": 1771443289573,
+    "name": "Jonathan Angular",
+    "email": "jonathan1@teste.com",
+    "password": "12345678"
   }
 ]
