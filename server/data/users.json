@@ -70,5 +70,35 @@
     "name": "Jonathan Angular",
     "email": "jonathan1@teste.com",
     "password": "12345678"
+  },
+  {
+    "id": 1771535766999,
+    "name": "fulano",
+    "email": "fulano@gmail.com",
+    "password": "fulano10"
+  },
+  {
+    "id": 1771537392199,
+    "name": "asdasd",
+    "email": "test@gmial.com",
+    "password": "asdasdasdasd"
+  },
+  {
+    "id": 1771537409369,
+    "name": "teste",
+    "email": "teste@gmail.com",
+    "password": "10203040"
+  },
+  {
+    "id": 1771542810168,
+    "name": "felipe",
+    "email": "t3@t.com",
+    "password": "12345678"
+  },
+  {
+    "id": 1771543722556,
+    "name": "jonathan agiota",
+    "email": "jonathanlacerda10@gmail.com",
+    "password": "12345678"
   }
 ]
