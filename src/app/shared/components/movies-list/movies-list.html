@@ -1,179 +1,33 @@
-<p class="text-red-400">{{ movies() | json }}</p>
 <div class="overflow-y-auto px-4 md:px-8 pb-8 scroll-smooth h-full">
   <div class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-6" role="list">
-    <button
-      type="button"
-      class="relative group w-full aspect-[2/3] rounded-lg overflow-hidden cursor-pointer bg-[#202024] text-left focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:ring-offset-[#121214] transition-all"
-      role="listitem"
-    >
-      <img
-        src="https://image.tmdb.org/t/p/w1280/iOdcXYSVzBgmBJzNIlIMOZ6fz0F.jpg"
-        alt=""
-        aria-hidden="true"
-        class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-      />
-      <div
-        class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4"
+    @for (movie of movies(); track movie.id) {
+      <button
+        type="button"
+        class="relative group w-full aspect-[2/3] rounded-lg overflow-hidden cursor-pointer bg-[#202024] text-left focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:ring-offset-[#121214] transition-all"
+        role="listitem"
+        [routerLink]="['/details', movie.id]"
       >
-        <span
-          class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-[#FACC15] flex items-center gap-1"
-          aria-label="Avaliação: 4,5 estrelas"
+        <img
+          [src]="BASE_PATH + movie.caminhoImagem"
+          alt=""
+          aria-hidden="true"
+          class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4"
         >
-          <span aria-hidden="true">★</span> 4,5
-        </span>
-        <h3 class="font-bold text-lg leading-tight mb-1 text-white">Pobres Criaturas</h3>
-        <span class="text-xs text-gray-300 font-medium">Drama • 2023</span>
-      </div>
-    </button>
-
-    <button
-      type="button"
-      class="relative group w-full aspect-[2/3] rounded-lg overflow-hidden cursor-pointer bg-[#202024] text-left focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:ring-offset-[#121214] transition-all"
-      role="listitem"
-    >
-      <img
-        src="https://image.tmdb.org/t/p/w1280/s8BefU3RIJrfipTpsDtOiatlp8j.jpg"
-        alt=""
-        aria-hidden="true"
-        class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-      />
-      <div
-        class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4"
-      >
-        <span
-          class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-[#FACC15]"
-          aria-label="Avaliação: 4,5 estrelas"
-        >
-          <span aria-hidden="true">★</span> 4,5
-        </span>
-        <h3 class="font-bold text-lg leading-tight mb-1 text-white">Meu Malvado Favorito 4</h3>
-        <span class="text-xs text-gray-300 font-medium">Animação • 2024</span>
-      </div>
-    </button>
-
-    <button
-      type="button"
-      class="relative group w-full aspect-[2/3] rounded-lg overflow-hidden cursor-pointer bg-[#202024] text-left focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:ring-offset-[#121214] transition-all"
-      role="listitem"
-    >
-      <img
-        src="https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
-        alt=""
-        aria-hidden="true"
-        class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-      />
-      <div
-        class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4"
-      >
-        <span
-          class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-[#FACC15]"
-          aria-label="Avaliação: 4,8 estrelas"
-        >
-          <span aria-hidden="true">★</span> 4,8
-        </span>
-        <h3 class="font-bold text-lg leading-tight mb-1 text-white">Deadpool & Wolverine</h3>
-        <span class="text-xs text-gray-300 font-medium">Ação • 2024</span>
-      </div>
-    </button>
-
-    <button
-      type="button"
-      class="relative group w-full aspect-[2/3] rounded-lg overflow-hidden cursor-pointer bg-[#202024] text-left focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:ring-offset-[#121214] transition-all"
-      role="listitem"
-    >
-      <img
-        src="https://image.tmdb.org/t/p/w1280/lNflUElL8Bp7pp5j8sQR2Z9qNZX.jpg"
-        alt=""
-        aria-hidden="true"
-        class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-      />
-      <div
-        class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4"
-      >
-        <span
-          class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-[#FACC15]"
-          aria-label="Avaliação: 4,2 estrelas"
-        >
-          <span aria-hidden="true">★</span> 4,2
-        </span>
-        <h3 class="font-bold text-lg leading-tight mb-1 text-white">O Corvo</h3>
-        <span class="text-xs text-gray-300 font-medium">Fantasia • 2024</span>
-      </div>
-    </button>
-
-    <button
-      type="button"
-      class="relative group w-full aspect-[2/3] rounded-lg overflow-hidden cursor-pointer bg-[#202024] text-left focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:ring-offset-[#121214] transition-all"
-      role="listitem"
-    >
-      <img
-        src="https://image.tmdb.org/t/p/w1280/jB0W9tn4w07MFn7sTfqRTBLVytF.jpg"
-        alt=""
-        aria-hidden="true"
-        class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-      />
-      <div
-        class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4"
-      >
-        <span
-          class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-[#FACC15]"
-          aria-label="Avaliação: 4,7 estrelas"
-        >
-          <span aria-hidden="true">★</span> 4,7
-        </span>
-        <h3 class="font-bold text-lg leading-tight mb-1 text-white">Alien: Romulus</h3>
-        <span class="text-xs text-gray-300 font-medium">Terror • 2024</span>
-      </div>
-    </button>
-
-    <button
-      type="button"
-      class="relative group w-full aspect-[2/3] rounded-lg overflow-hidden cursor-pointer bg-[#202024] text-left focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:ring-offset-[#121214] transition-all"
-      role="listitem"
-    >
-      <img
-        src="https://image.tmdb.org/t/p/w1280/lHKNS35r4RTa9GO72vdadMLxoiV.jpg"
-        alt=""
-        aria-hidden="true"
-        class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-      />
-      <div
-        class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4"
-      >
-        <span
-          class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-[#FACC15]"
-          aria-label="Avaliação: 4,9 estrelas"
-        >
-          <span aria-hidden="true">★</span> 4,9
-        </span>
-        <h3 class="font-bold text-lg leading-tight mb-1 text-white">Divertida Mente 2</h3>
-        <span class="text-xs text-gray-300 font-medium">Animação • 2024</span>
-      </div>
-    </button>
-
-    <button
-      type="button"
-      class="relative group w-full aspect-[2/3] rounded-lg overflow-hidden cursor-pointer bg-[#202024] text-left focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2 focus:ring-offset-[#121214] transition-all"
-      role="listitem"
-    >
-      <img
-        src="https://image.tmdb.org/t/p/w1280/6ricSDD83BClJsFdGB6x7cM0MFQ.jpg"
-        alt=""
-        aria-hidden="true"
-        class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-      />
-      <div
-        class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4"
-      >
-        <span
-          class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-[#FACC15]"
-          aria-label="Avaliação: 4,8 estrelas"
-        >
-          <span aria-hidden="true">★</span> 4,8
-        </span>
-        <h3 class="font-bold text-lg leading-tight mb-1 text-white">Interestelar</h3>
-        <span class="text-xs text-gray-300 font-medium">Ficção científica • 2014</span>
-      </div>
-    </button>
+          <span
+            class="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-[#FACC15] flex items-center gap-1"
+            aria-label="Avaliação: 4,5 estrelas"
+          >
+            <span aria-hidden="true">★</span> {{ movie.mediaVotos | number: '1.0-1' : 'pt-BR' }}
+          </span>
+          <h3 class="font-bold text-lg leading-tight mb-1 text-white">{{ movie.titulo }}</h3>
+          <span class="text-xs text-gray-300 font-medium"
+            >{{ movie.genero }} • {{ movie.anoLancamento }}</span
+          >
+        </div>
+      </button>
+    }
   </div>
 </div>

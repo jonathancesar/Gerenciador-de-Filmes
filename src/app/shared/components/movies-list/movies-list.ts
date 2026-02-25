@@ -1,10 +1,11 @@
 import { Component, input } from '@angular/core';
 import { MoviesListResponse } from '../../types/movies-list-response';
-import { JsonPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-movies-list',
-  imports: [JsonPipe],
+  imports: [DecimalPipe, RouterLink],
   templateUrl: './movies-list.html',
   styleUrl: './movies-list.css',
   host: {
@@ -12,5 +13,7 @@ import { JsonPipe } from '@angular/common';
   },
 })
 export class MoviesList {
+  BASE_PATH = 'http://localhost:3000';
+
   movies = input<MoviesListResponse>([]);
 }
