@@ -1,31 +1,8 @@
 <div class="w-full h-full bg-[#121214] text-gray-100 font-sans p-8 md:p-12 overflow-y-auto">
   <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 md:gap-12" tabindex="-1">
-    <a
-      href="#"
-      class="flex items-center text-gray-400 hover:text-white transition cursor-pointer absolute top-12 left-8 md:left-12 focus:outline-none focus:ring-2 focus:ring-purple-600 rounded p-1"
-      aria-label="Voltar para a lista de filmes"
-    >
-      <svg
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke="currentColor"
-        class="w-5 h-5 mr-2"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M10.5 19.5L3 12m0 0 7.5-7.5M3 12h18"
-        />
-      </svg>
-      Voltar
-    </a>
-
     <div class="w-full lg:w-1/3 min-w-[300px] flex flex-col items-center mt-10 lg:mt-0">
       <img
-        src="https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
+        [src]="BASE_URL + movieDetails()?.caminhoImagem"
         alt="Pobres Criaturas Poster"
         class="w-full aspect-[2/3] max-h-[500px] object-cover rounded-xl shadow-[0_0_20px_rgba(147,51,234,0.3)]"
       />
@@ -33,7 +10,7 @@
 
     <div class="w-full lg:w-2/3 space-y-6 pt-4">
       <div class="flex justify-between items-start gap-4">
-        <h2 class="text-4xl font-extrabold text-white">Pobres criaturas</h2>
+        <h2 class="text-4xl font-extrabold text-white">{{ movieDetails()?.titulo }}</h2>
 
         <button
           type="button"
@@ -42,85 +19,88 @@
           class="p-2 rounded-full transition-all text-gray-400 hover:text-purple-500 hover:bg-[#2c2c30] flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-purple-600"
         >
           @if (isFavorite()) {
-          <svg
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="w-7 h-7 text-purple-500 cursor-pointer"
-          >
-            <path
-              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-            />
-          </svg>
+            <svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-7 h-7 text-purple-500 cursor-pointer"
+            >
+              <path
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+              />
+            </svg>
           } @else {
-          <svg
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-7 h-7 cursor-pointer"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-            />
-          </svg>
+            <svg
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-7 h-7 cursor-pointer"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+              />
+            </svg>
           }
         </button>
       </div>
 
       <p class="text-lg text-gray-400">
-        Categoria: <span class="text-white font-medium">Drama</span>
+        Categoria: <span class="text-white font-medium">{{ movieDetails()?.genero }}</span>
       </p>
-      <p class="text-lg text-gray-400">Ano: <span class="text-white font-medium">2023</span></p>
+      <p class="text-lg text-gray-400">
+        Ano: <span class="text-white font-medium">{{ movieDetails()?.anoLancamento }}</span>
+      </p>
+
+      <p class="text-lg text-gray-400">
+        Média de avaliações:
+        <span class="text-white font-medium">
+          {{ movieDetails()?.mediaVotos | number: '1.0-1' : 'pt-BR' }}
+        </span>
+        <span class="text-sm text-gray-500"> {{ movieDetails()?.qtdVotos }}</span>
+      </p>
 
       <div class="flex items-center gap-2 pt-2" role="group" aria-label="Avaliação do filme">
         <div class="flex space-x-1">
-          @for (star of stars; track $index) {
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            role="button"
-            tabindex="0"
-            [attr.aria-label]="'Avaliar com ' + ($index + 1) + ' estrelas'"
-            [attr.data-rating]="$index + 1"
-            (click)="setRating($event)"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-7 h-7 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-purple-600 rounded-sm"
-            [class.fill-purple-500]="isStarFilled($index)"
-            [class.text-purple-500]="isStarFilled($index)"
-            [class.fill-none]="!isStarFilled($index)"
-            [class.text-gray-500]="!isStarFilled($index)"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.42.502a.563.563 0 01.314.996l-4.116 3.626a.563.563 0 00-.166.568l1.328 5.4a.563.563 0 01-.86.638l-4.993-3.04a.563.563 0 00-.586 0l-4.993 3.04a.563.563 0 01-.86-.638l1.328-5.4a.563.563 0 00-.166-.568L2.09 9.853a.562.562 0 01.314-.996l5.42-.502a.562.562 0 00.475-.345l2.125-5.111z"
-            />
-          </svg>
+          @for (field of starsStatusField(); track $index) {
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              role="button"
+              tabindex="0"
+              [attr.aria-label]="'Avaliar com ' + ($index + 1) + ' estrelas'"
+              [attr.data-rating]="$index + 1"
+              (click)="updateRating($index + 1)"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-7 h-7 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-purple-600 rounded-sm"
+              [class.fill-purple-500]="field"
+              [class.text-purple-500]="field"
+              [class.fill-none]="!field"
+              [class.text-gray-500]="!field"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.42.502a.563.563 0 01.314.996l-4.116 3.626a.563.563 0 00-.166.568l1.328 5.4a.563.563 0 01-.86.638l-4.993-3.04a.563.563 0 00-.586 0l-4.993 3.04a.563.563 0 01-.86-.638l1.328-5.4a.563.563 0 00-.166-.568L2.09 9.853a.562.562 0 01.314-.996l5.42-.502a.562.562 0 00.475-.345l2.125-5.111z"
+              />
+            </svg>
           }
         </div>
         <span class="text-xl font-bold text-white" aria-label="Nota atual">{{
           currentRating()
         }}</span>
-        <span class="text-sm text-gray-500">({{ reviewsCount }} avaliações)</span>
       </div>
 
       <hr class="border-t border-[#2c2c30] pt-4" />
 
       <p class="text-gray-300 leading-relaxed">
-        Do cineasta Yorgos Lanthimos e da produtora Emma Stone, vem o conto incrível e a evolução
-        fantástica de Bella Baxter (Stone), uma jovem mulher trazida de volta à vida pelo brilhante
-        e pouco ortodoxo cientista Dr. Godwin Baxter (Willem Dafoe). Sob a proteção de Baxter, Bella
-        está ansiosa para aprender. Faminta pela mundanidade que lhe falta, Bella foge com Duncan
-        Wedderburn (Mark Ruffalo), um advogado astuto e depravado, em uma aventura relâmpago pelos
-        continentes. Livre dos preconceitos de sua época, Bella se torna firme em seu propósito de
-        defender a igualdade e a libertação.
+        {{ movieDetails()?.descricao }}
       </p>
     </div>
   </div>
