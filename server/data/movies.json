@@ -18,5 +18,25 @@
     "caminhoImagem": "/uploads/image-1765666870177-14156342.jpg",
     "qtdVotos": 194,
     "mediaVotos": 4.8365
+  },
+  {
+    "id": 1772812821688,
+    "titulo": "breaking bad",
+    "descricao": "Série breaking bad",
+    "genero": "ação",
+    "anoLancamento": 2013,
+    "caminhoImagem": "/uploads/image-1772812821681-861061411.jpg",
+    "qtdVotos": 0,
+    "mediaVotos": 0
+  },
+  {
+    "id": 1772812848201,
+    "titulo": "breaking bad",
+    "descricao": "Série breaking bad",
+    "genero": "ação",
+    "anoLancamento": 2013,
+    "caminhoImagem": "/uploads/image-1772812848197-430008278.jpg",
+    "qtdVotos": 0,
+    "mediaVotos": 0
   }
 ]

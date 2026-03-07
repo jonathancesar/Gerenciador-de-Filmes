@@ -3,10 +3,11 @@ import { MoviesList } from '../../../../shared/components/movies-list/movies-lis
 import { MoviesFilter } from '../../components/movies-filter/movies-filter';
 import { MoviesApi } from '../services/movie-api';
 import { rxResource } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-explore-movies',
-  imports: [MoviesList, MoviesFilter],
+  imports: [MoviesList, MoviesFilter, RouterLink],
   templateUrl: './explore-movies.html',
   styleUrl: './explore-movies.css',
 })
