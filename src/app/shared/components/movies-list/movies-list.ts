@@ -2,6 +2,7 @@ import { Component, input } from '@angular/core';
 import { MoviesListResponse } from '../../types/movies-list-response';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-movies-list',
@@ -13,7 +14,7 @@ import { RouterLink } from '@angular/router';
   },
 })
 export class MoviesList {
-  BASE_PATH = 'http://localhost:3000';
+  BASE_PATH = environment.baseURL;
 
   movies = input<MoviesListResponse>([]);
 }

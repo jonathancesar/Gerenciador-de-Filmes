@@ -12,6 +12,7 @@ import { MoviesApi } from '../services/movie-api';
 import { DecimalPipe } from '@angular/common';
 import { tap } from 'rxjs';
 import { FavoritesApi } from '../../../../shared/services/favorites-api';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-movie-details',
@@ -23,7 +24,7 @@ export class MovieDetails {
   private readonly _moviesApi = inject(MoviesApi);
   private readonly _favoritesApi = inject(FavoritesApi);
 
-  readonly BASE_URL = 'http://localhost:3000';
+  readonly BASE_URL = environment.baseURL;
 
   id = input.required<number>();
 

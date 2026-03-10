@@ -6,6 +6,7 @@ import { tap } from 'rxjs';
 import { UserTokenStore } from './user-token-store';
 import { IUserRegisterSuccessResponse } from '../../shared/models/user-register-success-response';
 import { UserInfosStore } from './user-infos-store';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -17,13 +18,13 @@ export class UserApi {
 
   validateToken() {
     return this._httpClient.get<IUserTokenSuccessAuthResponse>(
-      'http://localhost:3000/users/validate-token',
+      environment.baseURL + '/users/validate-token',
     );
   }
 
   login(email: string, password: string) {
     return this._httpClient
-      .post<IUserSuccessResponse>('http://localhost:3000/users/login', {
+      .post<IUserSuccessResponse>(environment.baseURL + '/users/login', {
         email,
         password,
       })
@@ -40,7 +41,7 @@ export class UserApi {
   }
 
   register(name: string, email: string, password: string) {
-    return this._httpClient.post<IUserRegisterSuccessResponse>('http://localhost:3000/users', {
+    return this._httpClient.post<IUserRegisterSuccessResponse>(environment.baseURL + '/users', {
       name,
       email,
       password,

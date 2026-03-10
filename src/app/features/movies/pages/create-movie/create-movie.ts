@@ -1,11 +1,13 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { MoviesApi } from '../services/movie-api';
+import { setErrorMessage } from '../../../../shared/utils/set-error-message';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-create-movie',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './create-movie.html',
   styleUrl: './create-movie.css',
 })
@@ -26,6 +28,15 @@ export class CreateMovie {
   createMovieResource = rxResource({
     params: () => this.movieFormData(),
     stream: ({ params }) => this._moviesApi.createMovie(params),
+  });
+
+  //para mensagem de erro
+  errorMessage = computed(() => setErrorMessage(this.createMovieResource.error()));
+
+  //sucesso
+  successMessage = computed(() => {
+    const SUCCESS_CREATION = this.createMovieResource.hasValue();
+    return SUCCESS_CREATION ? 'Filme criado com sucesso!' : undefined;
   });
 
   /**
@@ -61,10 +72,5 @@ export class CreateMovie {
     formData.append('image', this.selectedFile() ?? '');
 
     this.movieFormData.set(formData);
-  }
-
-  cancelar() {
-    console.log('Operação cancelada!');
-    // Implemente a lógica de navegação de volta ou fechamento de modal aqui
   }
 }

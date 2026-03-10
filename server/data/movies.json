@@ -16,8 +16,8 @@
     "genero": "Sci-Fi",
     "anoLancamento": 2014,
     "caminhoImagem": "/uploads/image-1765666870177-14156342.jpg",
-    "qtdVotos": 194,
-    "mediaVotos": 4.8365
+    "qtdVotos": 195,
+    "mediaVotos": 4.8373
   },
   {
     "id": 1772812821688,
@@ -38,5 +38,15 @@
     "caminhoImagem": "/uploads/image-1772812848197-430008278.jpg",
     "qtdVotos": 0,
     "mediaVotos": 0
+  },
+  {
+    "id": 1773063771249,
+    "titulo": "Gigantes de aço",
+    "descricao": "Filme gigantes de aço",
+    "genero": "luta",
+    "anoLancamento": 2011,
+    "caminhoImagem": "/uploads/image-1773063771242-18002036.png",
+    "qtdVotos": 1,
+    "mediaVotos": 5
   }
 ]

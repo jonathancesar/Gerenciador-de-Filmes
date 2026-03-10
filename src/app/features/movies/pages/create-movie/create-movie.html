@@ -1,5 +1,5 @@
 <div class="w-full h-full text-gray-100 font-sans p-8 md:p-12 overflow-y-auto">
-  <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 p-8 md:p-12">
+  <form #movieForm="ngForm" class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 p-8 md:p-12">
     <div class="w-full lg:w-1/3 min-w-[300px] flex flex-col items-center">
       <input
         type="file"
@@ -60,6 +60,8 @@
           />
           <input
             [(ngModel)]="title"
+            name="title"
+            required
             type="text"
             id="titulo"
             aria-label="Título do filme"
@@ -82,6 +84,8 @@
             />
             <input
               [(ngModel)]="year"
+              name="year"
+              required
               type="number"
               id="ano"
               aria-label="Ano de lançamento"
@@ -103,6 +107,8 @@
             />
             <input
               [(ngModel)]="category"
+              name="category"
+              required
               type="text"
               id="categoria"
               aria-label="Categoria do filme"
@@ -119,6 +125,8 @@
         >
           <textarea
             [(ngModel)]="description"
+            name="description"
+            required
             id="descricao"
             aria-label="Descrição do filme"
             placeholder="Descrição"
@@ -131,19 +139,29 @@
       <div class="flex justify-end gap-3 pt-4">
         <button
           type="button"
-          (click)="cancelar()"
           class="px-6 py-3 border border-[#44444c] text-gray-400 rounded-lg hover:text-white hover:bg-[#323238] transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-500"
+          routerLink="/explore"
         >
           Cancelar
         </button>
         <button
           type="submit"
           (click)="salvar()"
-          class="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition shadow-lg shadow-purple-900/50 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-[#121214]"
+          class="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition shadow-lg shadow-purple-900/50 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-[#121214] disabled: opacity-50 disabled:cursor-not-allowed disabled:hover:bg-purple-800"
+          [disabled]="movieForm.invalid || !selectedFile()"
         >
           Salvar
         </button>
       </div>
+      <div class="flex justify-end">
+        @if (errorMessage()) {
+          <p class="text-sm font-bold text-red-400">{{ errorMessage() }}</p>
+        } @else if (successMessage()) {
+          <p class="text-sm font-bold text-green-400">{{ successMessage() }}</p>
+        } @else {
+          <p class="text-sm font-bold text-red-400">&nbsp;</p>
+        }
+      </div>
     </div>
-  </div>
+  </form>
 </div>
